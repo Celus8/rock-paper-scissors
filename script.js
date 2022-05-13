@@ -53,30 +53,30 @@ function normalizeString(str) { // Makes every letter lowercase and capitalizes 
 function playRound(playerSelection, computerSelection) {
     let winner;
 
-    let pS = playerSelection.toLowerCase();
-    let cS = computerSelection.toLowerCase();
-    if (pS === "rock") {
-        if (cS === "rock") {
+    let pS = normalizeString(playerSelection);
+    let cS = normalizeString(computerSelection);
+    if (pS === "Rock") {
+        if (cS === "Rock") {
             winner = "none";
-        } else if (cS === "paper") {
+        } else if (cS === "Paper") {
             winner = "computer";
-        } else if (cS === "scissors") {
+        } else if (cS === "Scissors") {
             winner = "player";
         }
-    } else if (pS === "paper") {
-        if (cS === "rock") {
+    } else if (pS === "Paper") {
+        if (cS === "Rock") {
             winner = "player";
-        } else if (cS === "paper") {
+        } else if (cS === "Paper") {
             winner = "none";
-        } else if (cS === "scissors") {
+        } else if (cS === "Scissors") {
             winner = "computer";
         }
-    } else if (pS === "scissors") {
-        if (cS === "rock") {
+    } else if (pS === "Scissors") {
+        if (cS === "Rock") {
             winner = "computer";
-        } else if (cS === "paper") {
+        } else if (cS === "Paper") {
             winner = "player";
-        } else if (cS === "scissors") {
+        } else if (cS === "Scissors") {
             winner = "none";
         }
     } else {
@@ -85,21 +85,20 @@ function playRound(playerSelection, computerSelection) {
 
     switch (winner) {
         case "none":
-            console.log("It's a tie!");
+            console.log(`It's a tie! You both picked ${pS}`);
             break;
         
         case "player":
-            console.log("You win!");
+            console.log(`You win! ${pS} beats ${cS}`);
             break;
 
         case "computer":
-            console.log("You lose!");
+            console.log(`You lose! ${cS} beats ${pS}`);
             break;
 
         default:
             console.log("Something went wrong.");
             break;
     }
-
 
 }
