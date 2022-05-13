@@ -30,3 +30,76 @@ function computerPlay() {
     // If computer choose scissors, then tie
 
 // Return a string that declares the winner of the round and what was played
+
+function isString(str) { // Checks wether the argument is a string
+    return typeof str === "string";
+  }
+
+function capitalizeFirst(str) { // Capitalizes the first letter
+    if (!isString(str)) return;
+    let firstLetter = str.charAt(0);
+    let capFirstLetter = firstLetter.toUpperCase();
+    let capStr = str.replace(firstLetter, capFirstLetter);
+    return capStr;
+}
+
+function normalizeString(str) { // Makes every letter lowercase and capitalizes first one
+    if (!isString(str)) return;
+    let lowerCaseStr = str.toLowerCase();
+    let normalizedStr = capitalizeFirst(lowerCaseStr);
+    return normalizedStr;
+}
+
+function playRound(playerSelection, computerSelection) {
+    let winner;
+
+    let pS = playerSelection.toLowerCase();
+    let cS = computerSelection.toLowerCase();
+    if (pS === "rock") {
+        if (cS === "rock") {
+            winner = "none";
+        } else if (cS === "paper") {
+            winner = "computer";
+        } else if (cS === "scissors") {
+            winner = "player";
+        }
+    } else if (pS === "paper") {
+        if (cS === "rock") {
+            winner = "player";
+        } else if (cS === "paper") {
+            winner = "none";
+        } else if (cS === "scissors") {
+            winner = "computer";
+        }
+    } else if (pS === "scissors") {
+        if (cS === "rock") {
+            winner = "computer";
+        } else if (cS === "paper") {
+            winner = "player";
+        } else if (cS === "scissors") {
+            winner = "none";
+        }
+    } else {
+        console.log("You must input a valid play.")
+    }
+
+    switch (winner) {
+        case "none":
+            console.log("It's a tie!");
+            break;
+        
+        case "player":
+            console.log("You win!");
+            break;
+
+        case "computer":
+            console.log("You lose!");
+            break;
+
+        default:
+            console.log("Something went wrong.");
+            break;
+    }
+
+
+}
