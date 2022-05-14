@@ -1,11 +1,3 @@
-// TO DO:
-// Organize code (meaningful variable names) and comments
-// Re-read assignment
-// Comment next steps
-// Commit often!
-
-
-
 /* Create a computerPlay function that will randomly return
 either "Rock", "Paper" or "Scissors". */
 function computerPlay() {
@@ -61,7 +53,8 @@ function playRound(playerSelection, computerSelection) { // Plays a round of Roc
     let winner;
     let pS = normalizeString(playerSelection);
     let cS = normalizeString(computerSelection);
-    
+    let winMessage;
+
     if (pS === "Rock") {
         if (cS === "Rock") {
             winner = "none";
@@ -92,20 +85,22 @@ function playRound(playerSelection, computerSelection) { // Plays a round of Roc
 
     switch (winner) {
         case "none":
-            console.log(`It's a tie! You both picked ${pS}`);
+            winMessage = `It's a tie! You both picked ${pS}`;
             break;
         
         case "player":
-            console.log(`You win! ${pS} beats ${cS}`);
+            winMessage = `You win! ${pS} beats ${cS}`;
             break;
 
         case "computer":
-            console.log(`You lose! ${cS} beats ${pS}`);
+            winMessage = `You lose! ${cS} beats ${pS}`;
             break;
 
         default:
-            console.log("Something went wrong.");
+            winMessage = "Something went wrong.";
             break;
     }
+
+    return winMessage;
 
 }
