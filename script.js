@@ -49,11 +49,23 @@ function normalizeString(str) { // Makes every letter lowercase and capitalizes 
     return normalizedStr;
 }
 
+function isInputValid(input) { // Checks if player input is a valid play
+    let normalizedInput = normalizeString(input);
+    if (normalizedInput === "Rock" ||
+    normalizedInput === "Paper" ||
+    normalizedInput === "Scissors") {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function playRound(playerSelection, computerSelection) { // Plays a round of Rock, Paper, Scissors
+
     let winner;
     let pS = normalizeString(playerSelection);
     let cS = normalizeString(computerSelection);
-
+    
     if (pS === "Rock") {
         if (cS === "Rock") {
             winner = "none";
@@ -78,8 +90,6 @@ function playRound(playerSelection, computerSelection) { // Plays a round of Roc
         } else if (cS === "Scissors") {
             winner = "none";
         }
-    } else {
-        console.log("You must input a valid play.")
     }
 
     switch (winner) {
@@ -112,12 +122,17 @@ Add 1 to each score for every win.
 Console.log a message with who won the game.
 */
 
-function game() {
-    let playerScore;
-    let computerScore;
+function game() { // Play a 5 round game of Rock, Paper, Scissors
+    let playerScore = 0;
+    let computerScore = 0;
 
     for (let i = 0; i < 5; i++) {
         let playerSelection = prompt("What will you play?");
+        if (!isInputValid(playerSelection)) {
+            console.log("Input a valid play!")
+            i--;
+            continue;
+        }
         let computerSelection = computerPlay();
         let winner = playRound(playerSelection, computerSelection);
 
@@ -133,7 +148,10 @@ function game() {
             default:
                 break;
         }
+
     }
+
+    
 
     if (playerScore > computerScore) {
         console.log("\nYou won! Congratulations!")
@@ -144,5 +162,3 @@ function game() {
     }
 
 }
-
-game();
