@@ -53,7 +53,6 @@ function playRound(playerSelection, computerSelection) { // Plays a round of Roc
     let winner;
     let pS = normalizeString(playerSelection);
     let cS = normalizeString(computerSelection);
-    let winMessage;
 
     if (pS === "Rock") {
         if (cS === "Rock") {
@@ -85,28 +84,26 @@ function playRound(playerSelection, computerSelection) { // Plays a round of Roc
 
     switch (winner) {
         case "none":
-            winMessage = `It's a tie! You both picked ${pS}`;
+            console.log(`It's a tie! You both picked ${pS}`);
             break;
         
         case "player":
-            winMessage = `You win! ${pS} beats ${cS}`;
+            console.log(`You win! ${pS} beats ${cS}`);
             break;
 
         case "computer":
-            winMessage = `You lose! ${cS} beats ${pS}`;
+            console.log(`You lose! ${cS} beats ${pS}`);
             break;
 
         default:
-            winMessage = "Something went wrong.";
+            console.log("Something went wrong.");
             break;
     }
 
-    return winMessage;
+    return winner;
 
 }
 
-/* Create a "game" function that calls the playRound function to play
-a 5 round game that keeps score and reports a winner or loser at the end. */
 /* Create a "game" function.
 Create playerScore and computerScore variables.
 Call the playRound function 5 times in a loop to play five games.
@@ -114,3 +111,38 @@ Each loop, prompt the user for a play.
 Add 1 to each score for every win.
 Console.log a message with who won the game.
 */
+
+function game() {
+    let playerScore;
+    let computerScore;
+
+    for (let i = 0; i < 5; i++) {
+        let playerSelection = prompt("What will you play?");
+        let computerSelection = computerPlay();
+        let winner = playRound(playerSelection, computerSelection);
+
+        switch (winner) {
+            case "player":
+                playerScore++;
+                break;
+    
+            case "computer":
+                computerScore++;
+                break;
+    
+            default:
+                break;
+        }
+    }
+
+    if (playerScore > computerScore) {
+        console.log("\nYou won! Congratulations!")
+    } else if (playerScore < computerScore) {
+        console.log("\nYou lost, better luck next time!");
+    } else {
+        console.log("\nIt's a tie! How interesting!")
+    }
+
+}
+
+game();
