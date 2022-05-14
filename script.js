@@ -104,3 +104,13 @@ function playRound(playerSelection, computerSelection) { // Plays a round of Roc
     return winMessage;
 
 }
+
+/* Create a "game" function that calls the playRound function to play
+a 5 round game that keeps score and reports a winner or loser at the end. */
+/* Create a "game" function.
+Create playerScore and computerScore variables.
+Call the playRound function 5 times in a loop to play five games.
+Each loop, prompt the user for a play.
+Add 1 to each score for every win.
+Console.log a message with who won the game.
+*/
