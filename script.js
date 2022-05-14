@@ -1,35 +1,42 @@
-// Create a computerPlay function that will randomly return
-// either "Rock", "Paper" or "Scissors".
+// TO DO:
+// Organize code (meaningful variable names) and comments
+// Re-read assignment
+// Comment next steps
+// Commit often!
+
+
+
+/* Create a computerPlay function that will randomly return
+either "Rock", "Paper" or "Scissors". */
 function computerPlay() {
-    let playNumber = Math.floor(Math.random()*3 + 1); // Assign 'playNumber' a random
-                                                      // number between 1 and 3
-    let play = "Rock";
+    let playNumber = Math.floor(Math.random()*3 + 1);
+    let playName = "Rock";
     if (playNumber === 2) {
-        play = "Paper";
+        playName = "Paper";
     } else if (playNumber === 3) {
-        play = "Scissors";
-    } // Assign each number a different play
-    return play;
+        playName = "Scissors";
+    }
+    return playName;
 }
 
-// Create a function that plays a single round of Rock Paper Scissors.
-// Take playerSelection and computerSelection as parameters
-// Create a string variable winner
-// Compare playerSelection to computerSelection and decide winner
-// If player choose rock
-    // If computer choose rock, then tie
-    // If computer choose paper, then assign computer to winner
-    // If computer choose scissors, then assign player to winner
-// If player choose paper
-    // If computer choose rock, then assign player to winner
-    // If computer choose paper, then tie
-    // If computer choose scissors, then assign computer to winner
-// If player choose scissors
-    // If computer choose rock, then assign computer to winner
-    // If computer choose paper, then assign player to winner
-    // If computer choose scissors, then tie
+/* Create a function that plays a single round of Rock Paper Scissors.
+Take playerSelection and computerSelection as parameters.
+Create a string variable called winner.
+Compare playerSelection to computerSelection and decide winner:
+If player chooses rock, then
+    If computer chooses rock, then tie
+    If computer chooses paper, then assign computer to winner
+    If computer chooses scissors, then assign player to winner
+If player chooses paper, then
+    If computer chooses rock, then assign player to winner
+    If computer chooses paper, then tie
+    If computer chooses scissors, then assign computer to winner
+If player chooses scissors, then
+    If computer chooses rock, then assign computer to winner
+    If computer chooses paper, then assign player to winner
+    If computer chooses scissors, then tie
 
-// Return a string that declares the winner of the round and what was played
+Finally, return a string that declares the winner of the round and what was played */
 
 function isString(str) { // Checks wether the argument is a string
     return typeof str === "string";
@@ -39,8 +46,8 @@ function capitalizeFirst(str) { // Capitalizes the first letter
     if (!isString(str)) return;
     let firstLetter = str.charAt(0);
     let capFirstLetter = firstLetter.toUpperCase();
-    let capStr = str.replace(firstLetter, capFirstLetter);
-    return capStr;
+    let capitalizedStr = str.replace(firstLetter, capFirstLetter);
+    return capitalizedStr;
 }
 
 function normalizeString(str) { // Makes every letter lowercase and capitalizes first one
@@ -50,11 +57,11 @@ function normalizeString(str) { // Makes every letter lowercase and capitalizes 
     return normalizedStr;
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) { // Plays a round of Rock, Paper, Scissors
     let winner;
-
     let pS = normalizeString(playerSelection);
     let cS = normalizeString(computerSelection);
+    
     if (pS === "Rock") {
         if (cS === "Rock") {
             winner = "none";
