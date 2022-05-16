@@ -1,5 +1,3 @@
-/* Create a computerPlay function that will randomly return
-either "Rock", "Paper" or "Scissors". */
 function computerPlay() {
     let playNumber = Math.floor(Math.random()*3 + 1);
     let playName = "Rock";
@@ -11,30 +9,11 @@ function computerPlay() {
     return playName;
 }
 
-/* Create a function that plays a single round of Rock Paper Scissors.
-Take playerSelection and computerSelection as parameters.
-Create a string variable called winner.
-Compare playerSelection to computerSelection and decide winner:
-If player chooses rock, then
-    If computer chooses rock, then tie
-    If computer chooses paper, then assign computer to winner
-    If computer chooses scissors, then assign player to winner
-If player chooses paper, then
-    If computer chooses rock, then assign player to winner
-    If computer chooses paper, then tie
-    If computer chooses scissors, then assign computer to winner
-If player chooses scissors, then
-    If computer chooses rock, then assign computer to winner
-    If computer chooses paper, then assign player to winner
-    If computer chooses scissors, then tie
-
-Finally, return a string that declares the winner of the round and what was played */
-
-function isString(str) { // Checks wether the argument is a string
+function isString(str) {
     return typeof str === "string";
   }
 
-function capitalizeFirst(str) { // Capitalizes the first letter
+function capitalizeFirst(str) {
     if (!isString(str)) return;
     let firstLetter = str.charAt(0);
     let capFirstLetter = firstLetter.toUpperCase();
@@ -49,7 +28,7 @@ function normalizeString(str) { // Makes every letter lowercase and capitalizes 
     return normalizedStr;
 }
 
-function isInputValid(input) { // Checks if player input is a valid play
+function isInputValid(input) {
     let normalizedInput = normalizeString(input);
     if (normalizedInput === "Rock" ||
     normalizedInput === "Paper" ||
@@ -60,49 +39,49 @@ function isInputValid(input) { // Checks if player input is a valid play
     }
 }
 
-function playRound(playerSelection, computerSelection) { // Plays a round of Rock, Paper, Scissors
+function playRound(playerSelection, computerSelection) {
 
     let winner;
-    let pS = normalizeString(playerSelection);
-    let cS = normalizeString(computerSelection);
+    let playerPlay = normalizeString(playerSelection);
+    let computerPlay = normalizeString(computerSelection);
     
-    if (pS === "Rock") {
-        if (cS === "Rock") {
+    if (playerPlay === "Rock") {
+        if (computerPlay === "Rock") {
             winner = "none";
-        } else if (cS === "Paper") {
+        } else if (computerPlay === "Paper") {
             winner = "computer";
-        } else if (cS === "Scissors") {
+        } else if (computerPlay === "Scissors") {
             winner = "player";
         }
-    } else if (pS === "Paper") {
-        if (cS === "Rock") {
+    } else if (playerPlay === "Paper") {
+        if (computerPlay === "Rock") {
             winner = "player";
-        } else if (cS === "Paper") {
+        } else if (computerPlay === "Paper") {
             winner = "none";
-        } else if (cS === "Scissors") {
+        } else if (computerPlay === "Scissors") {
             winner = "computer";
         }
-    } else if (pS === "Scissors") {
-        if (cS === "Rock") {
+    } else if (playerPlay === "Scissors") {
+        if (computerPlay === "Rock") {
             winner = "computer";
-        } else if (cS === "Paper") {
+        } else if (computerPlay === "Paper") {
             winner = "player";
-        } else if (cS === "Scissors") {
+        } else if (computerPlay === "Scissors") {
             winner = "none";
         }
     }
 
     switch (winner) {
         case "none":
-            console.log(`It's a tie! You both picked ${pS}`);
+            console.log(`It's a tie! You both picked ${playerPlay}`);
             break;
         
         case "player":
-            console.log(`You win! ${pS} beats ${cS}`);
+            console.log(`You win! ${playerPlay} beats ${computerPlay}`);
             break;
 
         case "computer":
-            console.log(`You lose! ${cS} beats ${pS}`);
+            console.log(`You lose! ${computerPlay} beats ${playerPlay}`);
             break;
 
         default:
@@ -113,14 +92,6 @@ function playRound(playerSelection, computerSelection) { // Plays a round of Roc
     return winner;
 
 }
-
-/* Create a "game" function.
-Create playerScore and computerScore variables.
-Call the playRound function 5 times in a loop to play five games.
-Each loop, prompt the user for a play.
-Add 1 to each score for every win.
-Console.log a message with who won the game.
-*/
 
 function game() { // Play a 5 round game of Rock, Paper, Scissors
     let playerScore = 0;
@@ -150,8 +121,6 @@ function game() { // Play a 5 round game of Rock, Paper, Scissors
         }
 
     }
-
-    
 
     if (playerScore > computerScore) {
         console.log("\nYou won! Congratulations!")
