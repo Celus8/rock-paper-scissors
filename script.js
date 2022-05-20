@@ -95,5 +95,8 @@ function playRound(playerSelection, computerSelection) {
 
 let buttons = document.querySelectorAll("button");
 
-buttons.forEach((currentValue) => currentValue.addEventListener("click",
-() => playRound(currentValue.id, computerPlay())));
+buttons.forEach((currentValue) => {
+    
+    currentValue.addEventListener("click", () => playRound(currentValue.id, computerPlay()))
+    
+}); // plays a game against computer with chosen selection
