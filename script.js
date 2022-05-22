@@ -39,6 +39,8 @@ function isInputValid(input) {
     }
 }
 
+let winMessage = document.querySelector("#results");
+
 function playRound(playerSelection, computerSelection) {
 
     let winner;
@@ -73,19 +75,19 @@ function playRound(playerSelection, computerSelection) {
 
     switch (winner) {
         case "none":
-            console.log(`It's a tie! You both picked ${playerPlay}`);
+            winMessage.textContent = `It's a tie! You both picked ${playerPlay}`;
             break;
         
         case "player":
-            console.log(`You win! ${playerPlay} beats ${computerPlay}`);
+            winMessage.textContent = `You win! ${playerPlay} beats ${computerPlay}`;
             break;
 
         case "computer":
-            console.log(`You lose! ${computerPlay} beats ${playerPlay}`);
+            winMessage.textContent = `You lose! ${computerPlay} beats ${playerPlay}`;
             break;
 
         default:
-            console.log("Something went wrong.");
+            winMessage.textContent = "Something went wrong.";
             break;
     }
 
