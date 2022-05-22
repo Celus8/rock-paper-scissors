@@ -40,12 +40,21 @@ function isInputValid(input) {
 }
 
 let winMessage = document.querySelector("#results");
+let scoreMessage = document.querySelector("#score");
+let playerScore = 0;
+let computerScore = 0;
+let playerScoreMessage = document.querySelector("#playerScore");
+let computerScoreMessage = document.querySelector("#computerScore");
+let winnerMessage = document.querySelector("#winner");
+
 
 function playRound(playerSelection, computerSelection) {
 
     let winner;
     let playerPlay = normalizeString(playerSelection);
     let computerPlay = normalizeString(computerSelection);
+
+    winnerMessage.textContent = "";
     
     if (playerPlay === "Rock") {
         if (computerPlay === "Rock") {
@@ -80,10 +89,12 @@ function playRound(playerSelection, computerSelection) {
         
         case "player":
             winMessage.textContent = `You win! ${playerPlay} beats ${computerPlay}`;
+            playerScore++;
             break;
 
         case "computer":
             winMessage.textContent = `You lose! ${computerPlay} beats ${playerPlay}`;
+            computerScore++;
             break;
 
         default:
@@ -91,9 +102,25 @@ function playRound(playerSelection, computerSelection) {
             break;
     }
 
+    if (playerScore >= 5) {
+        winnerMessage.textContent = "YOU HAVE WON THE GAME!"
+        playerScore = 0;
+        computerScore = 0;
+    }
+
+    if (computerScore >= 5) {
+        winnerMessage.textContent = "YOU HAVE LOST THE GAME!"
+        playerScore = 0;
+        computerScore = 0;
+    }
+
+    playerScoreMessage.textContent = playerScore;
+    computerScoreMessage.textContent = computerScore;
+
     return winner;
 
 }
+
 
 let buttons = document.querySelectorAll("button");
 
